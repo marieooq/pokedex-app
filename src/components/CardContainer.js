@@ -1,13 +1,14 @@
-import React from "react";
+import React from 'react';
 
 //components
-import Card from "./Card";
+import Card from './Card';
+import MediaCard from './MediaCard';
 
 const CardContainer = ({ lists }) => {
   return (
     <div className="card-container">
       {lists.map((list, index) => (
-        <Card list={list} key={index} />
+        <MediaCard list={list} key={index} />
       ))}
     </div>
   );
