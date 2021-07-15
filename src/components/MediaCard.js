@@ -14,12 +14,36 @@ const useStyles = makeStyles({
     maxWidth: 345,
   },
   media: {
-    height: 200,
+    height: 150,
+  },
+  typeList: {
+    fontSize: 12,
+    padding: '3px 6px',
+    color: '#000',
+    background: 'rgb(204, 204, 204)',
+    borderRadius: 5,
+    marginRight: 8,
   },
 });
 
 const MediaCard = ({ list }) => {
   const classes = useStyles();
+
+  const generateTypeLabel = (typeArray) => {
+    let list;
+
+    if (typeArray) {
+      list = typeArray.map((val, index) => {
+        return (
+          <span className={classes.typeList} key={index}>
+            {val}
+          </span>
+        );
+      });
+    }
+
+    return list;
+  };
 
   return (
     list !== undefined && (
@@ -33,13 +57,11 @@ const MediaCard = ({ list }) => {
             title="Contemplative Reptile"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
+            <Typography gutterBottom variant="h6" component="h6">
               {list.name.english}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
-            </Typography>
+
+            <div>{generateTypeLabel(list.type)}</div>
           </CardContent>
         </CardActionArea>
       </Card>
